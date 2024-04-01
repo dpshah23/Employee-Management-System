@@ -59,8 +59,10 @@ echo "    var status = element.innerText.trim();";
         echo "   break;";
         echo "default:";
             echo "break;";
+
+            echo "</script>";
     }
 });
-</script>
+
 
 ?>
