@@ -35,3 +35,7 @@ def getname():
         return jsonify({
             'error':"Sql Db Error Occured"
         })
+
+
+if __name__=='__main__':
+    app.run(debug=True)
