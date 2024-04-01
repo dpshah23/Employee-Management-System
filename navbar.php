@@ -12,9 +12,6 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Generate Salary Slip</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Company Policy</a>
-        </li>
         
       </ul>
      

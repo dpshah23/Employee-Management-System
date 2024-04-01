@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Panel | Employee Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
 <?php
 if(!$_SESSION['login']==true){
     header('location: login.php');
@@ -11,6 +25,7 @@ include 'dbconfig.php';
 
 $empid=$_SESSION['empid'];
 
+echo "<h3>Hello , $_SESSION['fname']";
 $rows=mysqli_query($conn,"SELECT * FROM attendence WHERE empid='$empid'");
 
 echo "<div class="container">";
@@ -30,9 +45,9 @@ echo "<thead>";
             echo "<div id=\"tabledata\">";
             echo "<tr>";
             echo "<th scope="row">($i+1)</th>";
-            echo "<td>$rows['date']</td>";
-            echo "<td>$rows['time']</td>";
-            echo "<td id=\"status\">$rows['status']</td>";
+            echo "<td>$rows['cdate']</td>";
+            echo "<td>$rows['ctime']</td>";
+            echo "<td id=\"status\">$rows['cstatus']</td>";
         echo "</tr>";
         echo "</div>";
         }
@@ -66,3 +81,6 @@ echo "    var status = element.innerText.trim();";
 
 
 ?>
+
+</body>
+</html>
