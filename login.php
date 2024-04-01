@@ -36,7 +36,39 @@
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $email=$_POST['email'];
-    $password=$_POST['password']
+    $password=$_POST['password'];
+
+    include 'dbconfig.php';
+
+    $authcheck=mysqli_query($conn,"SELECT * FROM users WHERE email='$email' AND password='$password'");
+    
+
+    if($row){
+        $_SESSION['login']=true;
+        $_SESSION['empid']=$row['empid'];
+        $_SESSION['email']=$row['email'];
+        $_SESSION['fname']=$row['fname'];
+        $_SESSION['lname']=$row['lname'];
+        $_SESSION['gender']=$row['gender'];
+        $_SESSION['mobile']=$row['mobile'];
+        $_SESSION['startdate']=$row['startdate'];
+        $_SESSION['isactive']=$row['isactive'];
+        $_SESSION['role']=$row['role'];
+
+
+        if($row['role']=='admin'){
+            header('location : ./admin/');
+        }
+        else{
+            header('location : employee.php');
+        }
+    }
+    else{
+        echo "<script>";
+        echo "alert(\"Email And Passwords Are Incorrect\");";
+        echo "</script>";
+    }
+
 }
 ?>
 </body>
