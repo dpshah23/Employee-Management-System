@@ -17,13 +17,22 @@ if(!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<?php
+include 'navbaradmin.php';
+?>
+<br>
+<br>
+<br>
 <div id='autocomplete' class="autocomplete">
     <form action="" method="get" class="d-flex" role="search">
         <input class="form-control me-2" type="search" name="name" placeholder="Search" id="autosearch" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </div>
-
+<br>
+<br>
+<br>
 <script>
     new autocomplete('#autocomplete',{
         search :input=>
