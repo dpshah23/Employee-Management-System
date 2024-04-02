@@ -49,6 +49,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $row = mysqli_fetch_array($authcheck);
 
     if($row){
+        echo $row;
         $_SESSION['login']=true;
         $_SESSION['empid']=$row['empid'];
         $_SESSION['email']=$row['email'];
@@ -64,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 
         if($row['role']=='admin'){
-            header('location: ./admin/index.php');
+            header('location: index.php');
             exit();
         }
         else{
