@@ -110,7 +110,8 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 {
     $option=$_POST['option'];
 
-    $sqlq=mysqli_query($conn,"INSERT INTO attendence (empid,cdate,ctime,cstatus) VALUES ('$_SESSION['empid']',date('D-m-Y'),date('H:i:s'),$option)")
+    $sqlq=mysqli_query($conn,"INSERT INTO attendence (empid,cdate,ctime,cstatus) VALUES ('".$_SESSION['empid']."',date('D-m-Y'),date('H:i:s'),'$option')");
+
     
     echo "<script>";
     echo "alert(\"Attendence Marked\")";

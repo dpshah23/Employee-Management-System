@@ -14,6 +14,8 @@
         </li>
         
       </ul>
+
+      <a class="btn btn-outline-success" href="logout.php">Log Out</a>
      
     </div>
   </div>

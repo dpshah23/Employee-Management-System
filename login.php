@@ -35,13 +35,18 @@
 </main>
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
+  session_start();
     $email=$_POST['email'];
     $password=$_POST['password'];
 
     include 'dbconfig.php';
 
     $authcheck=mysqli_query($conn,"SELECT * FROM users WHERE email='$email' AND password='$password'");
+    if (!$authcheck) {
+        die('Query failed: ' . mysqli_error($conn));
+    }
     
+    $row = mysqli_fetch_array($authcheck);
 
     if($row){
         $_SESSION['login']=true;
@@ -54,13 +59,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $_SESSION['startdate']=$row['startdate'];
         $_SESSION['isactive']=$row['isactive'];
         $_SESSION['role']=$row['role'];
+        echo "Session Created";
+        echo $row['role'];
 
 
         if($row['role']=='admin'){
-            header('location : ./admin/');
+            header('location: ./admin/index.php');
+            exit();
         }
         else{
-            header('location : employee.php');
+            header('location: employee.php');
+            exit();
         }
     }
     else{
