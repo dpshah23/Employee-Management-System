@@ -14,11 +14,13 @@ def getname():
     )
     if connection.is_connected():
         cursor = connection.cursor()
-        cursor.execute("SELECT name FROM users")
+        cursor.execute("SELECT fname FROM users")
         rows=cursor.fetchall()
         data=[]
         for row in rows:
+            print(row)
             if name in row:
+                print(name)
                 data.append({
                     'name':row
                 })
@@ -26,7 +28,8 @@ def getname():
         returnresponse={
             'data':data
         }
-
+        print(data)
+        print(jsonify(data))
         return jsonify(data)
 
 
