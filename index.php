@@ -72,7 +72,7 @@ include 'navbaradmin.php';
 <?php
 include 'dbconfig.php';
 
-if($_SERVER['REQUEST_METHOD']=="GET")
+if(isset($_GET['name']))
 {
     $name=$_GET['name'];
 
@@ -99,12 +99,13 @@ else
     while($row = mysqli_fetch_assoc($data)) {
     ?>
         <tr>
+        <form action="" method="post">
             <td><?php echo $i++; ?></td>
-            <td><?php echo $row['empid']; ?></td>
-            <td><?php echo $row['email']; ?></td>
-            <td><?php echo $row['mobile']; ?></td>
+            <td><input type="text" name="empid" value="<?php echo $row['empid'];  ?>"></td>
+            <td><input type="text" name="email" value="<?php echo $row['email']; ?>"></td>
+            <td><input type="text" name="mobile" value"<?php echo $row['mobile']; ?>"></td>
             <td>
-                <form action="" method="post">
+                
                     <select class="form-select" name="option" aria-label="Default select example">
                         <option selected>Select attendance</option>
                         <option value="Present">Present</option>
@@ -119,14 +120,28 @@ else
     }
     ?>
 
-    <?php
-    if($_SERVER['REQUEST_METHOD']=='POST') {
-        $option = $_POST['option'];
+<?php
+include 'dbconfig.php';
 
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $option = $_POST['option'];
+    $empid = $_POST['empid'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $cdate = date('Y-m-d');
+
+    // Check if attendance for the employee and current date already exists
+    $checkAttendanceQuery = "SELECT * FROM `attendence` WHERE `empid` = '$empid' AND `cdate` = '$cdate'";
+    $existingAttendanceResult = mysqli_query($conn, $checkAttendanceQuery);
+
+    if(mysqli_num_rows($existingAttendanceResult) > 0) {
+        echo "<script>";
+        echo "alert(\"Attendance already marked for today\")";
+        echo "</script>";
+    } else {
         // Using prepared statement to prevent SQL injection
         $stmt = $conn->prepare("INSERT INTO attendence (empid, cdate, ctime, cstatus) VALUES (?, ?, ?, ?)");
-        $empid = $_SESSION['empid'];
-        $cdate = date('D-m-Y');
+        $cdate = date('Y-m-d'); // Use MySQL format for date
         date_default_timezone_set('Asia/Kolkata');
         $ctime = date('H:i:s');
 
@@ -138,7 +153,9 @@ else
         echo "alert(\"Attendance Marked\")";
         echo "</script>";
     }
-    ?>
+}
+?>
+
     </tbody>
 </table>
 
