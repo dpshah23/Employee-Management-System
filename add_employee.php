@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Employee | Employee Management System</title>
-    <link rel="stylesheet" href="../login.css">
+    <link rel="stylesheet" href="login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+<?php
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $isactive=true;
+    $enddate=NULL;
+    $empid=$_POST['empid'];
+    $email=$_POST['email'];
+    $password=$_POST['password'];
+    $fname=$_POST['fname'];
+    $lname=$_POST['lname'];
+    $gender=$_POST['gender'];
+    $add=$_POST['address'];
+    $mobile=$_POST['mobile'];   
+    $sdate=$_POST['sdate'];
+    $role=$_POST['option'];
+
+    include 'dbconfig.php';
+
+    $sqlq="INSERT INTO `users` (`empid`, `email`, `password`, `fname`, `lname`, `gender`, `address`, `mobile`, `startdate`, `enddate`, `isactive`, `role`) VALUES ('$empid', '$email', '$password', '$fname', '$lname', '$gender', '$add', '$mobile', '$sdate', '$enddate', '$isactive', '$role');";
+
+    $result=mysqli_query($conn,$sqlq);
+
+    if($result){
+
+      header("location: addsalary.php"); 
+      exit();
+
+    }
+}
+
+?>
 <style>
     .form-floating {
         margin-bottom: 20px;
@@ -19,12 +51,10 @@
         padding: 0.375rem 2.25rem 0.375rem 0.75rem;
     }
 </style>
-</head>
-<body>
     <?php
         include 'navbaradmin.php';
     ?>
-    <div class="containe">
+    <div class="container">
     <main class="form-signin w-100 m-auto">
 <form action="" method="post" class="container">
 
@@ -88,33 +118,6 @@
 </main>
     </div>
 
-<?php
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $isactive=true;
-    $enddate=NULL;
-    $empid=$_POST['empid'];
-    $email=$_POST['email'];
-    $password=$_POST['password'];
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
-    $gender=$_POST['gender'];
-    $add=$_POST['address'];
-    $mobile=$_POST['mobile'];   
-    $sdate=$_POST['sdate'];
-    $role=$_POST['option'];
 
-    include 'dbconfig.php';
-
-    $sqlq="INSERT INTO `users` (`empid`, `email`, `password`, `fname`, `lname`, `gender`, `address`, `mobile`, `startdate`, `enddate`, `isactive`, `role`) VALUES ('$empid', '$email', '$password', '$fname', '$lname', '$gender', '$add', '$mobile', '$sdate', $enddate, '$isactive', '$role');";
-
-    $result=mysqli_query($conn,$sqlq);
-
-    if($result){
-        header("Location: addsalary.php");
-
-}
-}
-
-?>
 </body>
 </html>

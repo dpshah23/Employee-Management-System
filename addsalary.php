@@ -42,8 +42,8 @@
 </head>
 <body>
     <div class="form-container">
-        <form action="process_salary.php" method="POST">
-            <div class="form-group">
+        <form action="" method="POST">
+            <div class="form-group" action="" method="post">
                 <label for="empid">Employee ID:</label>
                 <input type="text" id="empid" name="empid" required>
             </div>
@@ -92,6 +92,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         echo "<script>";
         echo "alert('Salary added successfully');";
         echo "</script>";
+        header("Location: index.php");
+        exit();
     }
     else{
         echo "<script>";
