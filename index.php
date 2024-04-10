@@ -18,6 +18,13 @@ if(!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
 </head>
 <body>
 
+<style>
+    .no-border {
+    border: none;
+}
+
+</style>
+
 <?php
 include 'navbaradmin.php';
 ?>
@@ -101,9 +108,9 @@ else
         <tr>
         <form action="" method="post">
             <td><?php echo $i++; ?></td>
-            <td><input type="text" name="empid" value="<?php echo $row['empid'];  ?>"></td>
-            <td><input type="text" name="email" value="<?php echo $row['email']; ?>"></td>
-            <td><input type="text" name="mobile" value"<?php echo $row['mobile']; ?>"></td>
+            <td><input type="text" name="empid" class="no-border" value="<?php echo $row['empid'];  ?>"></td>
+            <td><input type="text" name="email"  class ="no-border" value="<?php echo $row['email']; ?>"></td>
+            <td><input type="text" name="mobile" class="no-border" value="<?php echo $row['mobile']; ?>"></td>
             <td>
                 
                     <select class="form-select" name="option" aria-label="Default select example">
