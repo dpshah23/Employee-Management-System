@@ -7,10 +7,10 @@ app=Flask(__name__)
 def getname():
     name=request.args.get('name')
     connection = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='employee management system'
+    host='sql301.infinityfree.com',
+    user='if0_36339381',
+    password='krVKX0mD3s3qI',
+    database='if0_36339381_employee'
     )
     if connection.is_connected():
         cursor = connection.cursor()
