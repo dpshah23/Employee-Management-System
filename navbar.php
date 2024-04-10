@@ -7,11 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="employee.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Generate Salary Slip</a>
+          <a class="nav-link active" aria-current="page" href="getsalary.php">Salary Information</a>
         </li>
+        
         
       </ul>
 
