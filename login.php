@@ -74,9 +74,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         }
     }
     else{
-        echo "<script>";
-        echo "alert(\"Email And Passwords Are Incorrect\");";
-        echo "</script>";
+        echo "Wrong Password"
     }
 
 }
