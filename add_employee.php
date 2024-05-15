@@ -50,6 +50,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     .form-select {
         padding: 0.375rem 2.25rem 0.375rem 0.75rem;
     }
+
+    .navbar {
+        background-color: #171138;
+    } 
+
+    body {
+        background-color: #E7C6B6; 
+    }
+
 </style>
     <?php
         include 'navbaradmin.php';
